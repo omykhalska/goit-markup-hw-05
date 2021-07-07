@@ -13,6 +13,7 @@
   --card-border-color: #eeeeee;
   --main-font: "Roboto", sans-serif;
   --secondary-font: "Raleway", sans-serif;
+  --transition: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -378,13 +379,14 @@ p {
   align-items: center;
   justify-content: center;
 
-  background-color:rgba(47, 48, 58, 0.8);
+  background-color: rgba(47, 48, 58, 0.8);
 }
 
 .work-desc {
   font-weight: 700;
   line-height: 1.14;
   text-transform: uppercase;
+  text-align: center;
   color: var(--secondary-text-color);
 }
 
@@ -547,8 +549,40 @@ p {
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
+.gallery-img-box {
+  position: relative;
+  overflow: hidden;
+}
+
 .gallery-img {
   display: block;
+}
+
+.gallery-popup-desc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+  overflow: auto;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--secondary-text-color);
+  background-color: rgba(33, 150, 243, 0.9);
+  opacity: 0;
+  transition: opacity 250ms var(--transition), transform 250ms var(--transition);
+}
+
+.gallery-link:hover .gallery-popup-desc,
+.gallery-link:focus .gallery-popup-desc {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .gallery-desc-wrapper {
@@ -580,8 +614,9 @@ p {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.backdrop.is-hidden {
+.is-hidden {
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
 }
 
@@ -603,10 +638,12 @@ p {
   position: absolute;
   top: 12px;
   right: 17px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px;
+  padding: 0;
+
   width: 30px;
   height: 30px;
   border-radius: 50%;
