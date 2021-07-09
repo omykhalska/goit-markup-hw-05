@@ -530,7 +530,8 @@ p {
   line-height: 1.62;
   letter-spacing: 0.03em;
   border-radius: 4px;
-  transition: background-color 250ms var(--transition), color 250ms var(--transition), box-shadow 250ms var(--transition);
+  transition: background-color 250ms var(--transition),
+    color 250ms var(--transition), box-shadow 250ms var(--transition);
 }
 
 .current-btn,
@@ -621,7 +622,8 @@ p {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
-  transition: opacity 250ms var(--transition), visibility 250ms var(--transition);
+  transition: opacity 250ms var(--transition),
+    visibility 250ms var(--transition);
 }
 
 .is-hidden {
@@ -634,7 +636,8 @@ p {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: transform 250ms;
   width: 528px;
   height: 580px;
   padding: 8px;
@@ -642,6 +645,10 @@ p {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+}
+
+.backdrop:not(.is-hidden) .modal {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .modal-close-btn {
